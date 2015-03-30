@@ -17,6 +17,8 @@ RUN /usr/bin/mysqld_safe & \
     sleep 10s && \
 	mysql -u root < /tmp/create_database.sql
 
+EXPOSE 3306
+
 VOLUME ["/var/lib/mysql", "/var/log/mysql"]
 
-CMD ["mysqld_safe"]
+CMD ["mysqld_safe", "--max_allowed_packet=64M"]
